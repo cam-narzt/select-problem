@@ -17,6 +17,7 @@ export namespace Components {
         "match": MatchResults;
     }
     interface AppRoot {
+        "selection": string;
     }
 }
 declare global {
@@ -62,6 +63,7 @@ declare namespace LocalJSX {
         "match"?: MatchResults;
     }
     interface AppRoot {
+        "selection"?: string;
     }
     interface IntrinsicElements {
         "app-dialog": AppDialog;

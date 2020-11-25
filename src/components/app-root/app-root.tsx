@@ -6,21 +6,25 @@ import { Component, h } from '@stencil/core';
   shadow: true,
 })
 export class AppRoot {
+
+  @Prop() selection: string = "";
+
+  handleSelectRole(_event,name){
+    this.selection = name;
+  }
+
   render() {
     return (
-      <div>
-        <header>
-          <h1>Stencil App Starter</h1>
-        </header>
-
-        <main>
-          <stencil-router>
-            <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route url="/" component="app-home" exact={true} />
-              <stencil-route url="/profile/:name" component="app-profile" />
-            </stencil-route-switch>
-          </stencil-router>
-        </main>
+      <div class="app-home">
+        <app-dialog>
+          <select onChange={(event) => this.handleSelectRole(event,name)}>
+            <option value="" selected={this.selection==""} disabled hidden>Roles</option>
+            <optgroup label="Roles">
+              <option value="admin" selected={this.selection=="admin"}>admin</option>
+              <option value="user" selected={this.selection=="user"}>user</option>
+            </optgroup>
+          </select>
+        </app-dialog>
       </div>
     );
   }
